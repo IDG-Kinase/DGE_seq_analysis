@@ -1,0 +1,154 @@
+---
+title: "DGE-seq DESeq2"
+author: "Matthew Berginski"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(DESeq2)
+library(tximport)
+library(readr)
+library(tximportData)
+library(tidyverse)
+library(readxl)
+library(here)
+library(tictoc)
+library(knitr)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The goal of this document is to use DESeq2 to analyze the results of CRISPRi perturbations to see what we can say about the transcriptome changes. 
+
+# Gather Well to Treatment Table
+
+```{r well_to_treatment_map, echo=T, results = 'hide',warning = F, message=F}
+well_to_treatment = read_excel(here('Sequencing_results/MB_Array1_Layout.xlsx')) %>%
+  dplyr::select(Dest384Well,Target) %>%
+  mutate('well_letter' = str_extract(Dest384Well,'[[:alpha:]]'),
+         'well_digit' = str_extract(Dest384Well,'[[:digit:]]{2}$')) %>%
+  mutate('well_id' = paste0(well_letter,well_digit)) %>%
+  dplyr::select(-Dest384Well,-well_letter,-well_digit)
+```
+
+# Run DESeq2 on Gene Perturbations
+
+```{r DESeq2_per_gene, echo=T, results='hide', warning = F, warning=F, message=F}
+tic();
+gene_list = unique(well_to_treatment$Target)
+gene_list = gene_list[! gene_list %in% c("NonTarget","DMSO","Trametinib","JQ1", "Tram + JQ1")]
+
+CRISPR_seq_hits = c();
+for (this_gene in gene_list) {
+  
+  samples = well_to_treatment %>% filter(Target == "NonTarget"|Target==this_gene)
+  rownames(samples) = samples$well_id
+  
+  salmon_files = here(sprintf("Sequencing_results/combined_sequencing/salmon_alignment/%s.fastq.gz/quant.sf",samples$well_id))
+  names(salmon_files) = samples$well_id
+  
+  ENST_to_HGNC = read_csv(here('ENST_to_HGNC.csv'))
+  ENST_to_ENST = ENST_to_HGNC
+  ENST_to_ENST$hgnc_symbol = ENST_to_ENST$ensembl_transcript_id_version
+  
+  salmon_import = tximport(salmon_files,type="salmon",tx2gene=ENST_to_ENST)
+  
+  ddsTxi <- DESeqDataSetFromTximport(salmon_import,
+                                     colData = samples,
+                                     design = ~ Target)
+  
+  dds <- DESeq(ddsTxi)
+  non_target_vs_results <- results(dds)
+  
+  hits <- as.data.frame(non_target_vs_results[which(non_target_vs_results$padj < 0.05),]) %>%
+    rownames_to_column(var = 'ensembl_transcript_id_version') %>%
+    left_join(ENST_to_HGNC) %>%
+    mutate(CRISPRi_target = this_gene) %>%
+    select(hgnc_symbol,CRISPRi_target,log2FoldChange,ensembl_transcript_id_version,everything())
+  
+  CRISPR_seq_hits = rbind(CRISPR_seq_hits,hits)
+}
+write_csv(CRISPR_seq_hits,here('DESeq2_CRISPR_hits_combined.csv'))
+toc();
+```
+
+# Hits from the Gene Perturbations
+
+These all the differentially regulated genes as filtered at the 0.05 level.
+
+```{r gene_hits_display}
+CRISPR_seq_hits = CRISPR_seq_hits %>% 
+  arrange(desc(CRISPRi_target), desc(log2FoldChange))
+
+kable(CRISPR_seq_hits)
+```
+
+Let's also look at the number of genes hit by each perturbation.
+
+```{r number_per_gene}
+hit_count_table = CRISPR_seq_hits %>% 
+  group_by(CRISPRi_target) %>% 
+  summarise(hit_count = n()) %>%
+  arrange(desc(hit_count))
+
+kable(hit_count_table)
+```
+
+# Run DESeq2 on Drug Perturbations
+
+```{r DESeq2_compound, echo=T, results='hide', warning = F, warning=F, message=F}
+compound_list = unique(well_to_treatment$Target)
+compound_list = compound_list[compound_list %in% c("Trametinib","JQ1", "Tram + JQ1")]
+
+compound_seq_hits = c();
+for (compound in compound_list) {
+  
+  samples = well_to_treatment %>% filter(Target == "DMSO"|Target==compound)
+  rownames(samples) = samples$well_id
+  
+  salmon_files = here(sprintf("Sequencing_results/combined_sequencing/salmon_alignment/%s.fastq.gz/quant.sf",samples$well_id))
+  names(salmon_files) = samples$well_id
+  
+  ENST_to_HGNC = read_csv(here('ENST_to_HGNC.csv'))
+  ENST_to_ENST = ENST_to_HGNC
+  ENST_to_ENST$hgnc_symbol = ENST_to_ENST$ensembl_transcript_id_version
+  
+  salmon_import = tximport(salmon_files,type="salmon",tx2gene=ENST_to_ENST)
+  
+  ddsTxi <- DESeqDataSetFromTximport(salmon_import,
+                                     colData = samples,
+                                     design = ~ Target)
+  
+  dds <- DESeq(ddsTxi)
+  non_target_vs_results <- results(dds)
+  
+  hits <- as.data.frame(non_target_vs_results[which(non_target_vs_results$padj < 0.05),]) %>%
+    rownames_to_column(var = 'ensembl_transcript_id_version') %>%
+    left_join(ENST_to_HGNC) %>%
+    mutate(compound = compound) %>%
+    select(hgnc_symbol,compound,log2FoldChange,ensembl_transcript_id_version,everything())
+  
+  compound_seq_hits = rbind(compound_seq_hits,hits)
+}
+write_csv(compound_seq_hits,here('DESeq2_CRISPR_drug_hits_combined.csv'))
+```
+
+These all the differentially regulated genes as filtered at the 0.05 level.
+
+```{r compound_hits_display}
+compound_seq_hits = compound_seq_hits %>%
+  arrange(desc(compound),desc(log2FoldChange))
+
+kable(compound_seq_hits)
+```
+
+Let's also look at the number of genes hit by each perturbation.
+
+```{r compound_number_per_gene}
+hit_count_table = compound_seq_hits %>% 
+  group_by(compound) %>% 
+  summarise(hit_count = n()) %>%
+  arrange(desc(hit_count))
+
+kable(hit_count_table)
+```
