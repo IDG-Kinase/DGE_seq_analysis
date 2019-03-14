@@ -17,7 +17,7 @@ library(kableExtra)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r DESeq_run, echo=T, results='hide', warning = F, warning=F, message=F}
+```{r DESeq_run, echo=T, results='hide', warning = F, warning=F, message=F, cache=T}
 salmon_files = list.files(path = '../../Sequencing_results/Bulk_RNAseq_drug_treatments/salmon_alignment/',
                           pattern='quant.sf',all.files = T,recursive = T, full.names = T)
 
@@ -79,7 +79,7 @@ Trametinib_overlap = Trametinib_DGE %>%
 
 kable(Trametinib_overlap)
 ```
-
+.
 ```{r JQ_overlap}
 JQ1_bulk = Bulk_seq_hits %>% filter(treatment == "JQ1")
 JQ1_DGE = DGE_seq_hits %>% filter(compound == "JQ1")
@@ -89,7 +89,7 @@ JQ1_overlap = JQ1_DGE %>%
 
 kable(JQ1_overlap)
 ```
-
+.
 ```{r Tram_JQ1_overlap}
 Trametinib_JQ1_bulk = Bulk_seq_hits %>% filter(treatment == "Trametinib_JQ1")
 Trametinib_JQ1_DGE = DGE_seq_hits %>% filter(compound == "Tram + JQ1")

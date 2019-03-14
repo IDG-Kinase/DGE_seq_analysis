@@ -270,6 +270,8 @@ ENST00000621040.4
 </tr>
 </tbody>
 </table>
+.
+
 ``` r
 JQ1_bulk = Bulk_seq_hits %>% filter(treatment == "JQ1")
 JQ1_DGE = DGE_seq_hits %>% filter(compound == "JQ1")
@@ -317,6 +319,8 @@ padj
 </tr>
 </tbody>
 </table>
+.
+
 ``` r
 Trametinib_JQ1_bulk = Bulk_seq_hits %>% filter(treatment == "Trametinib_JQ1")
 Trametinib_JQ1_DGE = DGE_seq_hits %>% filter(compound == "Tram + JQ1")
