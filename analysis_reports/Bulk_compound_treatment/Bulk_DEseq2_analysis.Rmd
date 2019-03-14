@@ -64,6 +64,8 @@ hit_counts = Bulk_seq_hits %>%
 kable(hit_counts)
 ```
 
+.
+
 # Overlaps with DGE-seq
 
 ```{r trametinib_overlap_with_bulk}
