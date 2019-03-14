@@ -1,0 +1,99 @@
+---
+title: "Bulk Compound Treatment DESeq2"
+author: "Matthew Berginski"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(DESeq2)
+library(tximport)
+library(readr)
+library(tximportData)
+library(here)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r DESeq_run, echo=T, results='hide', warning = F, warning=F, message=F}
+salmon_files = list.files(path = '../../Sequencing_results/Bulk_RNAseq_drug_treatments/salmon_alignment/',
+                          pattern='quant.sf',all.files = T,recursive = T, full.names = T)
+
+samples = tibble(Treatment = c(rep("Trametinib",3), 
+                               rep("Trametinib_JQ1",3),
+                               rep("JQ1",3),
+                               rep("DMSO",3)),
+                 files=salmon_files)
+
+ENST_to_HGNC = read_csv(here('ENST_to_HGNC.csv'))
+ENST_to_ENST = ENST_to_HGNC
+ENST_to_ENST$hgnc_symbol = ENST_to_ENST$ensembl_transcript_id_version
+
+Bulk_seq_hits = c();
+for (this_drug in c("Trametinib","Trametinib_JQ1","JQ1")) {
+  
+  these_samples = samples %>% filter(Treatment %in% c("DMSO",this_drug))
+
+  salmon_import = tximport(these_samples$files,type="salmon",tx2gene=ENST_to_ENST)
+  
+  ddsTxi <- DESeqDataSetFromTximport(salmon_import,
+                                     colData = these_samples,
+                                     design = ~ Treatment)
+  
+  dds <- DESeq(ddsTxi)
+  non_target_vs_results <- results(dds)
+  
+  hits <- as.data.frame(non_target_vs_results[which(non_target_vs_results$padj < 0.05),]) %>%
+    rownames_to_column(var = 'ensembl_transcript_id_version') %>%
+    left_join(ENST_to_HGNC) %>%
+    mutate(treatment = this_drug) %>%
+    select(hgnc_symbol,treatment,log2FoldChange,ensembl_transcript_id_version,everything())
+  
+  Bulk_seq_hits = rbind(Bulk_seq_hits,hits)
+}
+write_csv(Bulk_seq_hits,here('Bulk_RNAseq_DESeq2_hits.csv'))
+```
+
+```{r hit_counts}
+hit_counts = Bulk_seq_hits %>%
+  group_by(treatment) %>%
+  summarise(hit_count = n())
+
+kable(hit_counts)
+```
+
+# Overlaps with DGE-seq
+
+```{r trametinib_overlap_with_bulk}
+DGE_seq_hits = read_csv(here('DESeq2_CRISPR_drug_hits_combined.csv'))
+
+Trametinib_bulk = Bulk_seq_hits %>% filter(treatment == "Trametinib")
+Trametinib_DGE = DGE_seq_hits %>% filter(compound == "Trametinib")
+Trametinib_overlap = Trametinib_DGE %>% 
+  filter(hgnc_symbol %in% Trametinib_bulk$hgnc_symbol) %>%
+  select(hgnc_symbol,compound,log2FoldChange,ensembl_transcript_id_version,everything())
+
+kable(Trametinib_overlap)
+```
+
+```{r JQ_overlap}
+JQ1_bulk = Bulk_seq_hits %>% filter(treatment == "JQ1")
+JQ1_DGE = DGE_seq_hits %>% filter(compound == "JQ1")
+JQ1_overlap = JQ1_DGE %>% 
+  filter(hgnc_symbol %in% JQ1_bulk$hgnc_symbol) %>%
+  select(hgnc_symbol,compound,log2FoldChange,ensembl_transcript_id_version,everything())
+
+kable(JQ1_overlap)
+```
+
+```{r Tram_JQ1_overlap}
+Trametinib_JQ1_bulk = Bulk_seq_hits %>% filter(treatment == "Trametinib_JQ1")
+Trametinib_JQ1_DGE = DGE_seq_hits %>% filter(compound == "Tram + JQ1")
+Trametinib_JQ1_overlap = Trametinib_JQ1_DGE %>% 
+  filter(hgnc_symbol %in% Trametinib_JQ1_bulk$hgnc_symbol) %>%
+  select(hgnc_symbol,compound,log2FoldChange,ensembl_transcript_id_version,everything())
+
+kable(Trametinib_JQ1_overlap)
+```
