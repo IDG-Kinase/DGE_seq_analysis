@@ -1,0 +1,1263 @@
+BCL to FASTQ file converter
+bcl2fastq v2.20.0.422
+Copyright (c) 2007-2017 Illumina, Inc.
+
+2019-02-13 15:34:31 [7f347efa27c0] Command-line invocation: bcl2fastq -p 8 -r 8 -w 8 --no-lane-splitting --minimum-trimmed-read-length 17 --mask-short-adapter-reads 17 --runfolder-dir . --output-dir . 
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Minimum log level: INFO
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Sample sheet: './SampleSheet.csv'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Runfolder path: '.'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Input path: './Data/Intensities/BaseCalls/'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Intensities path: './Data/Intensities/'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Output path: '.'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: InterOp path: './InterOp/'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Stats path: './Stats/'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Reports path: './Reports/'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Detected CPUs: 48
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Loading threads: 8
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Processing threads: 8
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Writing threads: 8
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Allowed barcode mismatches: 1 
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Tiles: <ALL>
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Minimum trimmed read length: 17
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Use bases masks: <NONE>
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Mask short adapter reads: 17
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Adapter stringency: 0.9
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Adapter trimming method: Allow matches with indels
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Ignore missing BCLs: NO
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Ignore missing filters: NO
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Ignore missing positions: NO
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Ignore missing controls: NO
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Include non-PF clusters: NO
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Create FASTQs for index reads: NO
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Use bgzf compression for FASTQ files: YES
+2019-02-13 15:34:31 [7f347efa27c0] INFO: FASTQ compression level: 4
+2019-02-13 15:34:31 [7f347efa27c0] INFO: RunInfo.xml: '"./RunInfo.xml"'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Lane: 1
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Mask: 
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Sample: #0 'unknown' 'Undetermined' [default]
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Sample: #1 '1' 'All-Sequences' [default]
+2019-02-13 15:34:31 [7f347efa27c0] INFO:     Barcode: 'TCCTGAGC'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 1 data read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 1 index read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 18,19,20,21,22,23,24,25
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 2 data read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Lane: 2
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Mask: 
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Sample: #0 'unknown' 'Undetermined' [default]
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Sample: #1 '1' 'All-Sequences' [default]
+2019-02-13 15:34:31 [7f347efa27c0] INFO:     Barcode: 'TCCTGAGC'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 1 data read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 1 index read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 18,19,20,21,22,23,24,25
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 2 data read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Lane: 3
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Mask: 
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Sample: #0 'unknown' 'Undetermined' [default]
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Sample: #1 '1' 'All-Sequences' [default]
+2019-02-13 15:34:31 [7f347efa27c0] INFO:     Barcode: 'TCCTGAGC'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 1 data read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 1 index read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 18,19,20,21,22,23,24,25
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 2 data read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Lane: 4
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Mask: 
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Sample: #0 'unknown' 'Undetermined' [default]
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Sample: #1 '1' 'All-Sequences' [default]
+2019-02-13 15:34:31 [7f347efa27c0] INFO:     Barcode: 'TCCTGAGC'
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 1 data read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 1 index read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 18,19,20,21,22,23,24,25
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Read: 2 data read
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Cycles: 26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11101 (index: 0, clusters count: 539529, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11102 (index: 1, clusters count: 534357, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11103 (index: 2, clusters count: 535647, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11104 (index: 3, clusters count: 539737, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11105 (index: 4, clusters count: 541716, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11106 (index: 5, clusters count: 538499, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11107 (index: 6, clusters count: 537526, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11108 (index: 7, clusters count: 537254, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11109 (index: 8, clusters count: 534250, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11110 (index: 9, clusters count: 535227, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11111 (index: 10, clusters count: 531436, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11112 (index: 11, clusters count: 530204, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11201 (index: 12, clusters count: 525463, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11202 (index: 13, clusters count: 524151, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11203 (index: 14, clusters count: 524509, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11204 (index: 15, clusters count: 521979, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11205 (index: 16, clusters count: 520475, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11206 (index: 17, clusters count: 518685, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11207 (index: 18, clusters count: 520334, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11208 (index: 19, clusters count: 519735, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11209 (index: 20, clusters count: 518442, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11210 (index: 21, clusters count: 517672, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11211 (index: 22, clusters count: 518813, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11212 (index: 23, clusters count: 515750, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11301 (index: 24, clusters count: 511442, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11302 (index: 25, clusters count: 513347, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11303 (index: 26, clusters count: 513239, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11304 (index: 27, clusters count: 503550, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11305 (index: 28, clusters count: 498975, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11306 (index: 29, clusters count: 512142, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11307 (index: 30, clusters count: 513720, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11308 (index: 31, clusters count: 517047, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11309 (index: 32, clusters count: 519243, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11310 (index: 33, clusters count: 520275, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11311 (index: 34, clusters count: 523420, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11312 (index: 35, clusters count: 526225, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12101 (index: 36, clusters count: 533485, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12102 (index: 37, clusters count: 524768, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12103 (index: 38, clusters count: 526627, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12104 (index: 39, clusters count: 528797, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12105 (index: 40, clusters count: 530034, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12106 (index: 41, clusters count: 531558, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12107 (index: 42, clusters count: 529598, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12108 (index: 43, clusters count: 529208, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12109 (index: 44, clusters count: 527656, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12110 (index: 45, clusters count: 526178, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12111 (index: 46, clusters count: 523797, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12112 (index: 47, clusters count: 524047, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12201 (index: 48, clusters count: 524027, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12202 (index: 49, clusters count: 459593, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12203 (index: 50, clusters count: 524485, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12204 (index: 51, clusters count: 523164, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12205 (index: 52, clusters count: 468224, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12206 (index: 53, clusters count: 523574, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12207 (index: 54, clusters count: 524644, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12208 (index: 55, clusters count: 523010, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12209 (index: 56, clusters count: 467715, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12210 (index: 57, clusters count: 522805, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12211 (index: 58, clusters count: 521109, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12212 (index: 59, clusters count: 523282, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12301 (index: 60, clusters count: 518719, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12302 (index: 61, clusters count: 520455, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12303 (index: 62, clusters count: 509644, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12304 (index: 63, clusters count: 515392, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12305 (index: 64, clusters count: 516769, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12306 (index: 65, clusters count: 514353, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12307 (index: 66, clusters count: 518025, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12308 (index: 67, clusters count: 513574, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12309 (index: 68, clusters count: 524886, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12310 (index: 69, clusters count: 518516, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12311 (index: 70, clusters count: 522606, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12312 (index: 71, clusters count: 522447, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13101 (index: 72, clusters count: 536159, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13102 (index: 73, clusters count: 532848, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13103 (index: 74, clusters count: 531157, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13104 (index: 75, clusters count: 534292, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13105 (index: 76, clusters count: 534002, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13106 (index: 77, clusters count: 533852, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13107 (index: 78, clusters count: 532168, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13108 (index: 79, clusters count: 533686, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13109 (index: 80, clusters count: 531814, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13110 (index: 81, clusters count: 529376, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13111 (index: 82, clusters count: 529782, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13112 (index: 83, clusters count: 524874, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13201 (index: 84, clusters count: 522842, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13202 (index: 85, clusters count: 516576, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13203 (index: 86, clusters count: 522851, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13204 (index: 87, clusters count: 522293, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13205 (index: 88, clusters count: 520569, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13206 (index: 89, clusters count: 521733, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13207 (index: 90, clusters count: 520943, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13208 (index: 91, clusters count: 520415, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13209 (index: 92, clusters count: 519450, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13210 (index: 93, clusters count: 517422, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13211 (index: 94, clusters count: 518968, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13212 (index: 95, clusters count: 516578, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13301 (index: 96, clusters count: 514938, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13302 (index: 97, clusters count: 515240, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13303 (index: 98, clusters count: 509694, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13304 (index: 99, clusters count: 508499, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13305 (index: 100, clusters count: 515891, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13306 (index: 101, clusters count: 508832, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13307 (index: 102, clusters count: 511674, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13308 (index: 103, clusters count: 524335, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13309 (index: 104, clusters count: 527640, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13310 (index: 105, clusters count: 530126, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13311 (index: 106, clusters count: 530545, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13312 (index: 107, clusters count: 543835, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21101 (index: 108, clusters count: 528612, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21102 (index: 109, clusters count: 518604, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21103 (index: 110, clusters count: 525626, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21104 (index: 111, clusters count: 528628, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21105 (index: 112, clusters count: 526597, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21106 (index: 113, clusters count: 525001, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21107 (index: 114, clusters count: 523990, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21108 (index: 115, clusters count: 523118, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21109 (index: 116, clusters count: 521538, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21110 (index: 117, clusters count: 521173, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21111 (index: 118, clusters count: 519568, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21112 (index: 119, clusters count: 518102, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21201 (index: 120, clusters count: 516756, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21202 (index: 121, clusters count: 518211, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21203 (index: 122, clusters count: 516862, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21204 (index: 123, clusters count: 515683, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21205 (index: 124, clusters count: 515011, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21206 (index: 125, clusters count: 512963, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21207 (index: 126, clusters count: 512642, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21208 (index: 127, clusters count: 513313, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21209 (index: 128, clusters count: 462637, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21210 (index: 129, clusters count: 511046, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21211 (index: 130, clusters count: 511775, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21212 (index: 131, clusters count: 460494, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21301 (index: 132, clusters count: 506736, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21302 (index: 133, clusters count: 506813, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21303 (index: 134, clusters count: 507406, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21304 (index: 135, clusters count: 495392, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21305 (index: 136, clusters count: 488734, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21306 (index: 137, clusters count: 503378, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21307 (index: 138, clusters count: 504408, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21308 (index: 139, clusters count: 508753, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21309 (index: 140, clusters count: 509468, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21310 (index: 141, clusters count: 509322, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21311 (index: 142, clusters count: 513322, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21312 (index: 143, clusters count: 517709, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22101 (index: 144, clusters count: 521675, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22102 (index: 145, clusters count: 515563, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22103 (index: 146, clusters count: 514836, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22104 (index: 147, clusters count: 516279, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22105 (index: 148, clusters count: 517370, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22106 (index: 149, clusters count: 518046, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22107 (index: 150, clusters count: 517716, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22108 (index: 151, clusters count: 517362, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22109 (index: 152, clusters count: 516175, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22110 (index: 153, clusters count: 516170, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22111 (index: 154, clusters count: 514438, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22112 (index: 155, clusters count: 521880, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22201 (index: 156, clusters count: 516870, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22202 (index: 157, clusters count: 459044, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22203 (index: 158, clusters count: 466358, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22204 (index: 159, clusters count: 458110, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22205 (index: 160, clusters count: 464424, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22206 (index: 161, clusters count: 466031, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22207 (index: 162, clusters count: 464315, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22208 (index: 163, clusters count: 514132, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22209 (index: 164, clusters count: 514863, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22210 (index: 165, clusters count: 464204, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22211 (index: 166, clusters count: 464984, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22212 (index: 167, clusters count: 467184, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22301 (index: 168, clusters count: 510206, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22302 (index: 169, clusters count: 509370, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22303 (index: 170, clusters count: 516934, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22304 (index: 171, clusters count: 500003, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22305 (index: 172, clusters count: 503095, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22306 (index: 173, clusters count: 499023, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22307 (index: 174, clusters count: 503021, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22308 (index: 175, clusters count: 496604, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22309 (index: 176, clusters count: 512052, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22310 (index: 177, clusters count: 507279, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22311 (index: 178, clusters count: 512996, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22312 (index: 179, clusters count: 514112, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23101 (index: 180, clusters count: 521899, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23102 (index: 181, clusters count: 524370, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23103 (index: 182, clusters count: 527626, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23104 (index: 183, clusters count: 528016, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23105 (index: 184, clusters count: 530668, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23106 (index: 185, clusters count: 529286, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23107 (index: 186, clusters count: 529756, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23108 (index: 187, clusters count: 527170, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23109 (index: 188, clusters count: 527016, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23110 (index: 189, clusters count: 526077, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23111 (index: 190, clusters count: 525024, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23112 (index: 191, clusters count: 523165, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23201 (index: 192, clusters count: 466552, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23202 (index: 193, clusters count: 511898, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23203 (index: 194, clusters count: 579130, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23204 (index: 195, clusters count: 471593, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23205 (index: 196, clusters count: 511409, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23206 (index: 197, clusters count: 515935, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23207 (index: 198, clusters count: 516491, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23208 (index: 199, clusters count: 515432, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23209 (index: 200, clusters count: 469486, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23210 (index: 201, clusters count: 513228, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23211 (index: 202, clusters count: 512771, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23212 (index: 203, clusters count: 467623, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23301 (index: 204, clusters count: 508071, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23302 (index: 205, clusters count: 506894, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23303 (index: 206, clusters count: 504023, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23304 (index: 207, clusters count: 499255, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23305 (index: 208, clusters count: 502748, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23306 (index: 209, clusters count: 493764, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23307 (index: 210, clusters count: 500163, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23308 (index: 211, clusters count: 510642, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23309 (index: 212, clusters count: 513547, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23310 (index: 213, clusters count: 514919, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23311 (index: 214, clusters count: 513865, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23312 (index: 215, clusters count: 526527, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11101 (index: 0, clusters count: 487859, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11102 (index: 1, clusters count: 490550, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11103 (index: 2, clusters count: 495353, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11104 (index: 3, clusters count: 498767, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11105 (index: 4, clusters count: 500646, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11106 (index: 5, clusters count: 505613, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11107 (index: 6, clusters count: 505461, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11108 (index: 7, clusters count: 506518, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11109 (index: 8, clusters count: 506444, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11110 (index: 9, clusters count: 507466, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11111 (index: 10, clusters count: 509705, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11112 (index: 11, clusters count: 500702, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11201 (index: 12, clusters count: 514609, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11202 (index: 13, clusters count: 514482, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11203 (index: 14, clusters count: 514924, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11204 (index: 15, clusters count: 463758, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11205 (index: 16, clusters count: 515137, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11206 (index: 17, clusters count: 517388, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11207 (index: 18, clusters count: 519073, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11208 (index: 19, clusters count: 465028, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11209 (index: 20, clusters count: 521931, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11210 (index: 21, clusters count: 463989, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11211 (index: 22, clusters count: 465826, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11212 (index: 23, clusters count: 467883, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11301 (index: 24, clusters count: 528026, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11302 (index: 25, clusters count: 531613, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11303 (index: 26, clusters count: 531641, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11304 (index: 27, clusters count: 533076, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11305 (index: 28, clusters count: 535151, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11306 (index: 29, clusters count: 537695, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11307 (index: 30, clusters count: 539230, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11308 (index: 31, clusters count: 543710, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11309 (index: 32, clusters count: 546922, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11310 (index: 33, clusters count: 551816, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11311 (index: 34, clusters count: 551504, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11312 (index: 35, clusters count: 553639, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12101 (index: 36, clusters count: 500860, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12102 (index: 37, clusters count: 498670, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12103 (index: 38, clusters count: 503059, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12104 (index: 39, clusters count: 501437, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12105 (index: 40, clusters count: 492781, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12106 (index: 41, clusters count: 509025, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12107 (index: 42, clusters count: 509684, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12108 (index: 43, clusters count: 508086, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12109 (index: 44, clusters count: 503479, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12110 (index: 45, clusters count: 507027, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12111 (index: 46, clusters count: 512904, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12112 (index: 47, clusters count: 504104, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12201 (index: 48, clusters count: 517871, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12202 (index: 49, clusters count: 518859, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12203 (index: 50, clusters count: 454029, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12204 (index: 51, clusters count: 520461, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12205 (index: 52, clusters count: 522450, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12206 (index: 53, clusters count: 467847, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12207 (index: 54, clusters count: 472866, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12208 (index: 55, clusters count: 484129, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12209 (index: 56, clusters count: 483312, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12210 (index: 57, clusters count: 532487, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12211 (index: 58, clusters count: 486548, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12212 (index: 59, clusters count: 485808, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12301 (index: 60, clusters count: 534229, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12302 (index: 61, clusters count: 536157, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12303 (index: 62, clusters count: 534865, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12304 (index: 63, clusters count: 536271, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12305 (index: 64, clusters count: 536241, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12306 (index: 65, clusters count: 539614, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12307 (index: 66, clusters count: 540992, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12308 (index: 67, clusters count: 543346, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12309 (index: 68, clusters count: 544384, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12310 (index: 69, clusters count: 546311, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12311 (index: 70, clusters count: 546285, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12312 (index: 71, clusters count: 544784, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13101 (index: 72, clusters count: 486484, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13102 (index: 73, clusters count: 489119, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13103 (index: 74, clusters count: 486244, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13104 (index: 75, clusters count: 486238, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13105 (index: 76, clusters count: 496475, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13106 (index: 77, clusters count: 499255, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13107 (index: 78, clusters count: 499136, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13108 (index: 79, clusters count: 499234, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13109 (index: 80, clusters count: 495494, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13110 (index: 81, clusters count: 502974, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13111 (index: 82, clusters count: 505471, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13112 (index: 83, clusters count: 503842, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13201 (index: 84, clusters count: 504160, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13202 (index: 85, clusters count: 504534, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13203 (index: 86, clusters count: 504598, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13204 (index: 87, clusters count: 449590, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13205 (index: 88, clusters count: 454501, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13206 (index: 89, clusters count: 509575, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13207 (index: 90, clusters count: 455252, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13208 (index: 91, clusters count: 514326, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13209 (index: 92, clusters count: 458547, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13210 (index: 93, clusters count: 457668, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13211 (index: 94, clusters count: 460917, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13212 (index: 95, clusters count: 464496, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13301 (index: 96, clusters count: 527968, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13302 (index: 97, clusters count: 520672, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13303 (index: 98, clusters count: 522504, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13304 (index: 99, clusters count: 528040, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13305 (index: 100, clusters count: 533083, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13306 (index: 101, clusters count: 537205, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13307 (index: 102, clusters count: 540186, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13308 (index: 103, clusters count: 544269, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13309 (index: 104, clusters count: 546359, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13310 (index: 105, clusters count: 550978, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13311 (index: 106, clusters count: 552791, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13312 (index: 107, clusters count: 555874, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21101 (index: 108, clusters count: 484908, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21102 (index: 109, clusters count: 484927, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21103 (index: 110, clusters count: 486884, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21104 (index: 111, clusters count: 490669, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21105 (index: 112, clusters count: 491813, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21106 (index: 113, clusters count: 495191, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21107 (index: 114, clusters count: 494456, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21108 (index: 115, clusters count: 493443, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21109 (index: 116, clusters count: 494489, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21110 (index: 117, clusters count: 496174, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21111 (index: 118, clusters count: 497089, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21112 (index: 119, clusters count: 489812, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21201 (index: 120, clusters count: 505884, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21202 (index: 121, clusters count: 448791, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21203 (index: 122, clusters count: 507111, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21204 (index: 123, clusters count: 508251, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21205 (index: 124, clusters count: 509170, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21206 (index: 125, clusters count: 511010, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21207 (index: 126, clusters count: 511730, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21208 (index: 127, clusters count: 462681, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21209 (index: 128, clusters count: 465112, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21210 (index: 129, clusters count: 467500, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21211 (index: 130, clusters count: 464990, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21212 (index: 131, clusters count: 467678, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21301 (index: 132, clusters count: 525968, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21302 (index: 133, clusters count: 528987, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21303 (index: 134, clusters count: 530946, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21304 (index: 135, clusters count: 533165, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21305 (index: 136, clusters count: 539040, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21306 (index: 137, clusters count: 539595, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21307 (index: 138, clusters count: 543585, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21308 (index: 139, clusters count: 548605, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21309 (index: 140, clusters count: 553451, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21310 (index: 141, clusters count: 559918, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21311 (index: 142, clusters count: 563522, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21312 (index: 143, clusters count: 566149, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22101 (index: 144, clusters count: 492109, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22102 (index: 145, clusters count: 490285, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22103 (index: 146, clusters count: 494199, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22104 (index: 147, clusters count: 491853, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22105 (index: 148, clusters count: 484051, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22106 (index: 149, clusters count: 500503, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22107 (index: 150, clusters count: 502474, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22108 (index: 151, clusters count: 502730, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22109 (index: 152, clusters count: 494118, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22110 (index: 153, clusters count: 501069, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22111 (index: 154, clusters count: 506090, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22112 (index: 155, clusters count: 495586, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22201 (index: 156, clusters count: 451494, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22202 (index: 157, clusters count: 453344, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22203 (index: 158, clusters count: 450997, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22204 (index: 159, clusters count: 457510, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22205 (index: 160, clusters count: 462819, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22206 (index: 161, clusters count: 465419, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22207 (index: 162, clusters count: 471490, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22208 (index: 163, clusters count: 474951, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22209 (index: 164, clusters count: 480410, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22210 (index: 165, clusters count: 483071, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22211 (index: 166, clusters count: 480908, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22212 (index: 167, clusters count: 481615, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22301 (index: 168, clusters count: 530985, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22302 (index: 169, clusters count: 532752, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22303 (index: 170, clusters count: 531031, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22304 (index: 171, clusters count: 532877, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22305 (index: 172, clusters count: 533575, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22306 (index: 173, clusters count: 535146, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22307 (index: 174, clusters count: 539160, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22308 (index: 175, clusters count: 541129, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22309 (index: 176, clusters count: 544311, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22310 (index: 177, clusters count: 544612, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22311 (index: 178, clusters count: 549310, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22312 (index: 179, clusters count: 550347, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23101 (index: 180, clusters count: 482246, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23102 (index: 181, clusters count: 484632, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23103 (index: 182, clusters count: 480695, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23104 (index: 183, clusters count: 483464, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23105 (index: 184, clusters count: 492318, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23106 (index: 185, clusters count: 495913, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23107 (index: 186, clusters count: 496102, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23108 (index: 187, clusters count: 495225, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23109 (index: 188, clusters count: 491005, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23110 (index: 189, clusters count: 499243, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23111 (index: 190, clusters count: 500598, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23112 (index: 191, clusters count: 499383, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23201 (index: 192, clusters count: 499861, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23202 (index: 193, clusters count: 500797, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23203 (index: 194, clusters count: 500192, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23204 (index: 195, clusters count: 501254, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23205 (index: 196, clusters count: 452249, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23206 (index: 197, clusters count: 454192, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23207 (index: 198, clusters count: 454807, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23208 (index: 199, clusters count: 460060, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23209 (index: 200, clusters count: 460886, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23210 (index: 201, clusters count: 459389, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23211 (index: 202, clusters count: 466098, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23212 (index: 203, clusters count: 468097, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23301 (index: 204, clusters count: 523795, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23302 (index: 205, clusters count: 513096, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23303 (index: 206, clusters count: 517539, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23304 (index: 207, clusters count: 525504, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23305 (index: 208, clusters count: 528530, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23306 (index: 209, clusters count: 530796, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23307 (index: 210, clusters count: 535893, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23308 (index: 211, clusters count: 540716, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23309 (index: 212, clusters count: 544290, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23310 (index: 213, clusters count: 550049, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23311 (index: 214, clusters count: 554381, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23312 (index: 215, clusters count: 562020, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11401 (index: 0, clusters count: 517542, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11402 (index: 1, clusters count: 517969, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11403 (index: 2, clusters count: 515323, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11404 (index: 3, clusters count: 517641, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11405 (index: 4, clusters count: 517356, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11406 (index: 5, clusters count: 516559, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11407 (index: 6, clusters count: 514573, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11408 (index: 7, clusters count: 501423, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11409 (index: 8, clusters count: 502828, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11410 (index: 9, clusters count: 514803, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11411 (index: 10, clusters count: 509555, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11412 (index: 11, clusters count: 525448, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11501 (index: 12, clusters count: 525570, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11502 (index: 13, clusters count: 524336, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11503 (index: 14, clusters count: 517476, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11504 (index: 15, clusters count: 527010, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11505 (index: 16, clusters count: 526028, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11506 (index: 17, clusters count: 521470, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11507 (index: 18, clusters count: 527589, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11508 (index: 19, clusters count: 529573, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11509 (index: 20, clusters count: 528346, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11510 (index: 21, clusters count: 524144, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11511 (index: 22, clusters count: 525586, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11512 (index: 23, clusters count: 527250, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11601 (index: 24, clusters count: 526157, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11602 (index: 25, clusters count: 520681, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11603 (index: 26, clusters count: 527717, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11604 (index: 27, clusters count: 532275, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11605 (index: 28, clusters count: 531287, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11606 (index: 29, clusters count: 531561, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11607 (index: 30, clusters count: 530611, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11608 (index: 31, clusters count: 531922, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11609 (index: 32, clusters count: 530778, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11610 (index: 33, clusters count: 530262, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11611 (index: 34, clusters count: 527719, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11612 (index: 35, clusters count: 528571, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12401 (index: 36, clusters count: 525493, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12402 (index: 37, clusters count: 524697, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12403 (index: 38, clusters count: 525231, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12404 (index: 39, clusters count: 525628, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12405 (index: 40, clusters count: 525552, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12406 (index: 41, clusters count: 525834, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12407 (index: 42, clusters count: 523147, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12408 (index: 43, clusters count: 525001, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12409 (index: 44, clusters count: 512687, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12410 (index: 45, clusters count: 521829, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12411 (index: 46, clusters count: 515235, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12412 (index: 47, clusters count: 528996, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12501 (index: 48, clusters count: 527390, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12502 (index: 49, clusters count: 533312, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12503 (index: 50, clusters count: 532351, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12504 (index: 51, clusters count: 533986, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12505 (index: 52, clusters count: 529847, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12506 (index: 53, clusters count: 532549, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12507 (index: 54, clusters count: 537029, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12508 (index: 55, clusters count: 535653, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12509 (index: 56, clusters count: 534817, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12510 (index: 57, clusters count: 534730, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12511 (index: 58, clusters count: 533446, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12512 (index: 59, clusters count: 533461, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12601 (index: 60, clusters count: 519183, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12602 (index: 61, clusters count: 489456, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12603 (index: 62, clusters count: 471075, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12604 (index: 63, clusters count: 529292, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12605 (index: 64, clusters count: 531315, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12606 (index: 65, clusters count: 533121, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12607 (index: 66, clusters count: 532819, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12608 (index: 67, clusters count: 532900, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12609 (index: 68, clusters count: 532005, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12610 (index: 69, clusters count: 531719, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12611 (index: 70, clusters count: 532881, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12612 (index: 71, clusters count: 531822, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13401 (index: 72, clusters count: 522779, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13402 (index: 73, clusters count: 521170, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13403 (index: 74, clusters count: 521106, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13404 (index: 75, clusters count: 522184, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13405 (index: 76, clusters count: 522398, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13406 (index: 77, clusters count: 520400, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13407 (index: 78, clusters count: 512178, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13408 (index: 79, clusters count: 520387, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13409 (index: 80, clusters count: 518754, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13410 (index: 81, clusters count: 509922, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13411 (index: 82, clusters count: 524907, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13412 (index: 83, clusters count: 526843, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13501 (index: 84, clusters count: 534004, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13502 (index: 85, clusters count: 533467, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13503 (index: 86, clusters count: 533004, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13504 (index: 87, clusters count: 532954, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13505 (index: 88, clusters count: 533234, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13506 (index: 89, clusters count: 534867, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13507 (index: 90, clusters count: 535634, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13508 (index: 91, clusters count: 535531, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13509 (index: 92, clusters count: 535975, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13510 (index: 93, clusters count: 535301, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13511 (index: 94, clusters count: 533833, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13512 (index: 95, clusters count: 531662, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13601 (index: 96, clusters count: 430402, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13602 (index: 97, clusters count: 500515, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13603 (index: 98, clusters count: 539707, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13604 (index: 99, clusters count: 542610, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13605 (index: 100, clusters count: 543618, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13606 (index: 101, clusters count: 543920, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13607 (index: 102, clusters count: 545409, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13608 (index: 103, clusters count: 543935, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13609 (index: 104, clusters count: 541540, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13610 (index: 105, clusters count: 539091, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13611 (index: 106, clusters count: 538810, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13612 (index: 107, clusters count: 538694, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21401 (index: 108, clusters count: 516218, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21402 (index: 109, clusters count: 515656, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21403 (index: 110, clusters count: 515119, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21404 (index: 111, clusters count: 514826, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21405 (index: 112, clusters count: 515654, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21406 (index: 113, clusters count: 515627, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21407 (index: 114, clusters count: 513279, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21408 (index: 115, clusters count: 489798, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21409 (index: 116, clusters count: 483356, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21410 (index: 117, clusters count: 490001, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21411 (index: 118, clusters count: 501394, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21412 (index: 119, clusters count: 521097, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21501 (index: 120, clusters count: 523844, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21502 (index: 121, clusters count: 523456, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21503 (index: 122, clusters count: 515723, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21504 (index: 123, clusters count: 524694, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21505 (index: 124, clusters count: 523693, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21506 (index: 125, clusters count: 520006, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21507 (index: 126, clusters count: 524310, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21508 (index: 127, clusters count: 525693, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21509 (index: 128, clusters count: 525145, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21510 (index: 129, clusters count: 521602, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21511 (index: 130, clusters count: 523702, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21512 (index: 131, clusters count: 523764, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21601 (index: 132, clusters count: 420964, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21602 (index: 133, clusters count: 531886, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21603 (index: 134, clusters count: 534367, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21604 (index: 135, clusters count: 535220, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21605 (index: 136, clusters count: 533747, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21606 (index: 137, clusters count: 531779, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21607 (index: 138, clusters count: 530877, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21608 (index: 139, clusters count: 529967, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21609 (index: 140, clusters count: 528931, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21610 (index: 141, clusters count: 528495, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21611 (index: 142, clusters count: 528396, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21612 (index: 143, clusters count: 527962, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22401 (index: 144, clusters count: 524133, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22402 (index: 145, clusters count: 522835, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22403 (index: 146, clusters count: 521820, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22404 (index: 147, clusters count: 523803, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22405 (index: 148, clusters count: 524499, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22406 (index: 149, clusters count: 524176, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22407 (index: 150, clusters count: 517156, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22408 (index: 151, clusters count: 523229, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22409 (index: 152, clusters count: 505155, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22410 (index: 153, clusters count: 517005, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22411 (index: 154, clusters count: 511532, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22412 (index: 155, clusters count: 525008, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22501 (index: 156, clusters count: 524792, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22502 (index: 157, clusters count: 532003, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22503 (index: 158, clusters count: 529558, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22504 (index: 159, clusters count: 529294, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22505 (index: 160, clusters count: 526449, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22506 (index: 161, clusters count: 528003, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22507 (index: 162, clusters count: 531953, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22508 (index: 163, clusters count: 532902, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22509 (index: 164, clusters count: 531745, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22510 (index: 165, clusters count: 530379, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22511 (index: 166, clusters count: 530437, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22512 (index: 167, clusters count: 529868, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22601 (index: 168, clusters count: 431888, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22602 (index: 169, clusters count: 409534, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22603 (index: 170, clusters count: 522051, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22604 (index: 171, clusters count: 528984, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22605 (index: 172, clusters count: 527350, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22606 (index: 173, clusters count: 530035, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22607 (index: 174, clusters count: 529326, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22608 (index: 175, clusters count: 528088, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22609 (index: 176, clusters count: 530670, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22610 (index: 177, clusters count: 529455, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22611 (index: 178, clusters count: 529278, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22612 (index: 179, clusters count: 529813, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23401 (index: 180, clusters count: 519770, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23402 (index: 181, clusters count: 518608, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23403 (index: 182, clusters count: 518028, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23404 (index: 183, clusters count: 517497, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23405 (index: 184, clusters count: 519094, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23406 (index: 185, clusters count: 519451, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23407 (index: 186, clusters count: 502068, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23408 (index: 187, clusters count: 517416, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23409 (index: 188, clusters count: 511832, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23410 (index: 189, clusters count: 501357, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23411 (index: 190, clusters count: 522493, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23412 (index: 191, clusters count: 525844, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23501 (index: 192, clusters count: 531168, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23502 (index: 193, clusters count: 530837, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23503 (index: 194, clusters count: 530990, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23504 (index: 195, clusters count: 529037, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23505 (index: 196, clusters count: 530550, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23506 (index: 197, clusters count: 529891, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23507 (index: 198, clusters count: 531795, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23508 (index: 199, clusters count: 532257, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23509 (index: 200, clusters count: 532208, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23510 (index: 201, clusters count: 532504, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23511 (index: 202, clusters count: 530303, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23512 (index: 203, clusters count: 529083, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23601 (index: 204, clusters count: 417771, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23602 (index: 205, clusters count: 416651, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23603 (index: 206, clusters count: 536746, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23604 (index: 207, clusters count: 540622, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23605 (index: 208, clusters count: 542930, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23606 (index: 209, clusters count: 542153, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23607 (index: 210, clusters count: 541331, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23608 (index: 211, clusters count: 539576, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23609 (index: 212, clusters count: 538788, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23610 (index: 213, clusters count: 537630, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23611 (index: 214, clusters count: 534878, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23612 (index: 215, clusters count: 534678, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11401 (index: 0, clusters count: 543365, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11402 (index: 1, clusters count: 544685, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11403 (index: 2, clusters count: 547718, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11404 (index: 3, clusters count: 542816, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11405 (index: 4, clusters count: 546772, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11406 (index: 5, clusters count: 542623, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11407 (index: 6, clusters count: 545061, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11408 (index: 7, clusters count: 551426, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11409 (index: 8, clusters count: 556717, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11410 (index: 9, clusters count: 558354, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11411 (index: 10, clusters count: 562745, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11412 (index: 11, clusters count: 564408, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11501 (index: 12, clusters count: 533694, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11502 (index: 13, clusters count: 538026, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11503 (index: 14, clusters count: 537374, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11504 (index: 15, clusters count: 537558, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11505 (index: 16, clusters count: 535936, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11506 (index: 17, clusters count: 539075, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11507 (index: 18, clusters count: 539489, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11508 (index: 19, clusters count: 539975, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11509 (index: 20, clusters count: 541545, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11510 (index: 21, clusters count: 541442, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11511 (index: 22, clusters count: 545327, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11512 (index: 23, clusters count: 542967, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11601 (index: 24, clusters count: 533108, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11602 (index: 25, clusters count: 494590, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11603 (index: 26, clusters count: 538400, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11604 (index: 27, clusters count: 542984, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11605 (index: 28, clusters count: 539778, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11606 (index: 29, clusters count: 512735, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11607 (index: 30, clusters count: 539528, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11608 (index: 31, clusters count: 537698, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11609 (index: 32, clusters count: 537837, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11610 (index: 33, clusters count: 537018, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11611 (index: 34, clusters count: 530049, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 11612 (index: 35, clusters count: 535702, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12401 (index: 36, clusters count: 543914, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12402 (index: 37, clusters count: 542084, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12403 (index: 38, clusters count: 544760, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12404 (index: 39, clusters count: 538164, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12405 (index: 40, clusters count: 544096, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12406 (index: 41, clusters count: 546864, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12407 (index: 42, clusters count: 547389, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12408 (index: 43, clusters count: 549748, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12409 (index: 44, clusters count: 551093, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12410 (index: 45, clusters count: 556338, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12411 (index: 46, clusters count: 557774, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12412 (index: 47, clusters count: 561731, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12501 (index: 48, clusters count: 519361, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12502 (index: 49, clusters count: 538852, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12503 (index: 50, clusters count: 541396, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12504 (index: 51, clusters count: 535104, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12505 (index: 52, clusters count: 536515, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12506 (index: 53, clusters count: 538158, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12507 (index: 54, clusters count: 541651, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12508 (index: 55, clusters count: 539677, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12509 (index: 56, clusters count: 543378, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12510 (index: 57, clusters count: 544134, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12511 (index: 58, clusters count: 542026, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12512 (index: 59, clusters count: 545200, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12601 (index: 60, clusters count: 533773, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12602 (index: 61, clusters count: 519555, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12603 (index: 62, clusters count: 511148, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12604 (index: 63, clusters count: 528182, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12605 (index: 64, clusters count: 517888, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12606 (index: 65, clusters count: 523748, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12607 (index: 66, clusters count: 534943, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12608 (index: 67, clusters count: 534042, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12609 (index: 68, clusters count: 538334, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12610 (index: 69, clusters count: 537811, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12611 (index: 70, clusters count: 533588, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 12612 (index: 71, clusters count: 539152, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13401 (index: 72, clusters count: 543368, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13402 (index: 73, clusters count: 543661, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13403 (index: 74, clusters count: 540419, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13404 (index: 75, clusters count: 543234, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13405 (index: 76, clusters count: 538542, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13406 (index: 77, clusters count: 545452, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13407 (index: 78, clusters count: 547258, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13408 (index: 79, clusters count: 550755, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13409 (index: 80, clusters count: 556564, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13410 (index: 81, clusters count: 558396, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13411 (index: 82, clusters count: 559242, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13412 (index: 83, clusters count: 557478, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13501 (index: 84, clusters count: 542612, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13502 (index: 85, clusters count: 544716, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13503 (index: 86, clusters count: 545808, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13504 (index: 87, clusters count: 537835, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13505 (index: 88, clusters count: 538804, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13506 (index: 89, clusters count: 540688, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13507 (index: 90, clusters count: 543987, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13508 (index: 91, clusters count: 543217, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13509 (index: 92, clusters count: 545090, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13510 (index: 93, clusters count: 545777, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13511 (index: 94, clusters count: 548585, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13512 (index: 95, clusters count: 540342, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13601 (index: 96, clusters count: 521851, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13602 (index: 97, clusters count: 518097, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13603 (index: 98, clusters count: 511086, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13604 (index: 99, clusters count: 497853, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13605 (index: 100, clusters count: 522779, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13606 (index: 101, clusters count: 525638, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13607 (index: 102, clusters count: 522969, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13608 (index: 103, clusters count: 525730, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13609 (index: 104, clusters count: 525365, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13610 (index: 105, clusters count: 526193, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13611 (index: 106, clusters count: 527996, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 13612 (index: 107, clusters count: 532380, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21401 (index: 108, clusters count: 541620, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21402 (index: 109, clusters count: 544085, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21403 (index: 110, clusters count: 546466, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21404 (index: 111, clusters count: 544152, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21405 (index: 112, clusters count: 547396, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21406 (index: 113, clusters count: 541640, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21407 (index: 114, clusters count: 545063, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21408 (index: 115, clusters count: 554137, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21409 (index: 116, clusters count: 559311, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21410 (index: 117, clusters count: 561455, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21411 (index: 118, clusters count: 567104, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21412 (index: 119, clusters count: 568885, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21501 (index: 120, clusters count: 527300, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21502 (index: 121, clusters count: 530725, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21503 (index: 122, clusters count: 530362, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21504 (index: 123, clusters count: 530186, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21505 (index: 124, clusters count: 528926, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21506 (index: 125, clusters count: 532527, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21507 (index: 126, clusters count: 535154, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21508 (index: 127, clusters count: 537603, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21509 (index: 128, clusters count: 538154, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21510 (index: 129, clusters count: 539926, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21511 (index: 130, clusters count: 541590, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21512 (index: 131, clusters count: 543885, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21601 (index: 132, clusters count: 530918, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21602 (index: 133, clusters count: 482890, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21603 (index: 134, clusters count: 527500, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21604 (index: 135, clusters count: 532120, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21605 (index: 136, clusters count: 527420, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21606 (index: 137, clusters count: 501430, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21607 (index: 138, clusters count: 528927, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21608 (index: 139, clusters count: 521401, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21609 (index: 140, clusters count: 526975, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21610 (index: 141, clusters count: 526729, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21611 (index: 142, clusters count: 520365, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 21612 (index: 143, clusters count: 526451, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22401 (index: 144, clusters count: 542259, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22402 (index: 145, clusters count: 539185, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22403 (index: 146, clusters count: 542338, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22404 (index: 147, clusters count: 537060, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22405 (index: 148, clusters count: 541761, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22406 (index: 149, clusters count: 545233, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22407 (index: 150, clusters count: 544834, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22408 (index: 151, clusters count: 547315, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22409 (index: 152, clusters count: 550505, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22410 (index: 153, clusters count: 552454, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22411 (index: 154, clusters count: 555115, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22412 (index: 155, clusters count: 556403, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22501 (index: 156, clusters count: 507394, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22502 (index: 157, clusters count: 528715, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22503 (index: 158, clusters count: 530765, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22504 (index: 159, clusters count: 527231, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22505 (index: 160, clusters count: 529836, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22506 (index: 161, clusters count: 533440, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22507 (index: 162, clusters count: 534254, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22508 (index: 163, clusters count: 533847, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22509 (index: 164, clusters count: 537437, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22510 (index: 165, clusters count: 539292, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22511 (index: 166, clusters count: 537728, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22512 (index: 167, clusters count: 539236, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22601 (index: 168, clusters count: 532045, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22602 (index: 169, clusters count: 513670, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22603 (index: 170, clusters count: 505599, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22604 (index: 171, clusters count: 520735, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22605 (index: 172, clusters count: 511295, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22606 (index: 173, clusters count: 518556, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22607 (index: 174, clusters count: 523770, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22608 (index: 175, clusters count: 524739, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22609 (index: 176, clusters count: 529632, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22610 (index: 177, clusters count: 528150, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22611 (index: 178, clusters count: 527083, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 22612 (index: 179, clusters count: 532099, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23401 (index: 180, clusters count: 544991, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23402 (index: 181, clusters count: 543051, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23403 (index: 182, clusters count: 538618, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23404 (index: 183, clusters count: 537583, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23405 (index: 184, clusters count: 536987, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23406 (index: 185, clusters count: 549865, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23407 (index: 186, clusters count: 551684, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23408 (index: 187, clusters count: 555326, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23409 (index: 188, clusters count: 561269, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23410 (index: 189, clusters count: 563743, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23411 (index: 190, clusters count: 572656, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23412 (index: 191, clusters count: 579491, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23501 (index: 192, clusters count: 537500, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23502 (index: 193, clusters count: 537951, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23503 (index: 194, clusters count: 542119, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23504 (index: 195, clusters count: 532755, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23505 (index: 196, clusters count: 533938, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23506 (index: 197, clusters count: 538642, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23507 (index: 198, clusters count: 537299, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23508 (index: 199, clusters count: 539813, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23509 (index: 200, clusters count: 543269, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23510 (index: 201, clusters count: 542200, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23511 (index: 202, clusters count: 545258, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23512 (index: 203, clusters count: 533499, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23601 (index: 204, clusters count: 510862, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23602 (index: 205, clusters count: 511026, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23603 (index: 206, clusters count: 505873, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23604 (index: 207, clusters count: 491865, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23605 (index: 208, clusters count: 520051, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23606 (index: 209, clusters count: 522317, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23607 (index: 210, clusters count: 517902, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23608 (index: 211, clusters count: 520395, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23609 (index: 212, clusters count: 520601, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23610 (index: 213, clusters count: 519816, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23611 (index: 214, clusters count: 523531, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO:   Tile: 23612 (index: 215, clusters count: 527248, skipped tiles: 0, skipped clusters: 0)
+2019-02-13 15:34:31 [7f347efa27c0] INFO: creating directory "./Stats"
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Created FASTQ file '"./Undetermined_S0_R1_001.fastq.gz"
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Created FASTQ file '"./Undetermined_S0_R2_001.fastq.gz"
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Created FASTQ file '"./All-Sequences_S1_R1_001.fastq.gz"
+2019-02-13 15:34:31 [7f347efa27c0] INFO: Created FASTQ file '"./All-Sequences_S1_R2_001.fastq.gz"
+2019-02-13 15:34:33 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0001.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:33 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0002.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0003.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0004.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0005.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0006.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0007.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0008.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0009.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0010.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0011.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0012.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0013.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0015.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0014.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0017.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0018.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0020.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0021.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0022.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0016.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0024.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0019.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0023.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0025.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:34 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0026.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0027.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0028.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0029.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0030.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0031.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0032.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0033.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0035.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0036.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0037.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0038.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0039.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0040.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0041.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0042.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0043.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0044.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0045.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0047.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0048.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0034.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0049.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0050.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:35 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0051.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0052.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0053.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0054.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0055.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0056.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0057.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0058.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0059.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0060.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0046.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0062.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0063.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0065.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0066.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0067.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0068.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0069.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0070.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0071.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0064.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:34:36 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L001/0061.bcl.bgzf' with 111274839 clusters
+2019-02-13 15:48:09 [7f347efa27c0] INFO: Created FASTQ file '"./Undetermined_S0_R1_001.fastq.gz"
+2019-02-13 15:48:09 [7f347efa27c0] INFO: Created FASTQ file '"./Undetermined_S0_R2_001.fastq.gz"
+2019-02-13 15:48:09 [7f347efa27c0] INFO: Created FASTQ file '"./All-Sequences_S1_R1_001.fastq.gz"
+2019-02-13 15:48:09 [7f347efa27c0] INFO: Created FASTQ file '"./All-Sequences_S1_R2_001.fastq.gz"
+2019-02-13 15:48:09 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0001.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0002.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0003.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0004.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0008.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0006.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0005.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0007.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0009.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0010.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0011.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0012.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0013.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0014.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0015.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0016.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0017.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:09 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0018.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0021.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0019.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0020.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0022.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0023.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0024.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0025.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0028.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0026.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0027.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0029.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0030.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0031.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0033.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0032.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0034.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0035.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0036.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0037.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0038.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0039.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:10 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0041.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0042.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0043.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0044.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0045.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0046.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0040.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0047.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0048.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0050.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0049.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0053.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0052.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0054.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0051.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0055.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0056.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0057.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0058.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0060.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0059.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0062.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0061.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0064.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0063.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0065.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0066.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:11 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0067.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:12 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0068.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:12 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0069.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:12 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0070.bcl.bgzf' with 109374795 clusters
+2019-02-13 15:48:12 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L002/0071.bcl.bgzf' with 109374795 clusters
+2019-02-13 16:01:20 [7f347efa27c0] INFO: Created FASTQ file '"./Undetermined_S0_R1_001.fastq.gz"
+2019-02-13 16:01:20 [7f347efa27c0] INFO: Created FASTQ file '"./Undetermined_S0_R2_001.fastq.gz"
+2019-02-13 16:01:20 [7f347efa27c0] INFO: Created FASTQ file '"./All-Sequences_S1_R1_001.fastq.gz"
+2019-02-13 16:01:20 [7f347efa27c0] INFO: Created FASTQ file '"./All-Sequences_S1_R2_001.fastq.gz"
+2019-02-13 16:01:22 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0001.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:22 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0002.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:22 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0003.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:22 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0004.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:22 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0005.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:22 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0006.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:22 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0007.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:22 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0008.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:22 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0009.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:22 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0010.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:22 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0011.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0012.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0013.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0014.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0015.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0016.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0017.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0018.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0019.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0020.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0021.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0022.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0023.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0024.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0025.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0026.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0027.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0028.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0029.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0030.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0031.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0032.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0033.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0034.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0035.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0036.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0037.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0038.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0039.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:23 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0040.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0041.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0043.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0044.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0045.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0046.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0047.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0042.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0048.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0049.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0050.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0051.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0052.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0053.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0054.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0055.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0056.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0057.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0058.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0059.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0060.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0061.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0062.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0063.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0064.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0065.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0066.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0067.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0068.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0069.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0070.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:01:24 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L003/0071.bcl.bgzf' with 112913462 clusters
+2019-02-13 16:15:07 [7f347efa27c0] INFO: Created FASTQ file '"./Undetermined_S0_R1_001.fastq.gz"
+2019-02-13 16:15:07 [7f347efa27c0] INFO: Created FASTQ file '"./Undetermined_S0_R2_001.fastq.gz"
+2019-02-13 16:15:07 [7f347efa27c0] INFO: Created FASTQ file '"./All-Sequences_S1_R1_001.fastq.gz"
+2019-02-13 16:15:07 [7f347efa27c0] INFO: Created FASTQ file '"./All-Sequences_S1_R2_001.fastq.gz"
+2019-02-13 16:15:10 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0004.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0006.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0001.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0007.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0003.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0002.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0005.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0008.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0009.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0010.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0011.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0012.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0013.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0014.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0015.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0016.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0017.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0018.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0019.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0020.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0021.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0022.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:10 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0023.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0024.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0025.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0026.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0027.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0028.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0029.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0030.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0031.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0032.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0033.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0034.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0035.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0036.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0037.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0038.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0039.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0040.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0041.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0042.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0043.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0044.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0045.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0046.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0047.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0048.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0049.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0050.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:11 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0051.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0052.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0053.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0054.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0055.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0056.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0057.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0058.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0059.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0060.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0061.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0062.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0063.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347b74d700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0064.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347d751700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0065.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f3479f4a700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0066.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347a74b700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0067.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347bf4e700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0068.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347c74f700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0069.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347cf50700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0070.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:15:12 [7f347af4c700] INFO: Opened BCL file './Data/Intensities/BaseCalls/L004/0071.bcl.bgzf' with 116002645 clusters
+2019-02-13 16:29:24 [7f347efa27c0] INFO: Created InterOp file '"./InterOp/IndexMetricsOut.bin"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/all"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/all/all"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/all/all/all"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/all/all/unknown"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default/All-Sequences"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default/All-Sequences/TCCTGAGC"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default/All-Sequences/all"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default/All-Sequences/unknown"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default/Undetermined"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default/Undetermined/all"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default/Undetermined/unknown"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default/all"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default/all/all"
+2019-02-13 16:29:28 [7f347efa27c0] INFO: creating directory "./Reports/html/H3YWCBGX5/default/all/unknown"
+2019-02-13 16:29:29 [7f347efa27c0] Processing completed with 0 errors and 0 warnings.

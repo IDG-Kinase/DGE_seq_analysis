@@ -9,3 +9,7 @@ analysis_reports/*/*.rds
 Transcripts/*.gz
 
 indexes/*index
+
+Sequencing_results/*/*.fastq.gz
+Sequencing_results/*/split_transcript_reads
+Sequencing_results/*/salmon_alignment
