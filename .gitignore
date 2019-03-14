@@ -5,3 +5,5 @@
 
 analysis_reports/*/*cache
 analysis_reports/*/*.rds
+
+Transcripts/*.gz
