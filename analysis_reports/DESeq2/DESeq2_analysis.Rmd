@@ -5,150 +5,310 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-library(DESeq2)
-library(tximport)
+library("tximeta")
+library("DESeq2")
+
+library("BiocParallel")
+
+register(MulticoreParam(10))
+
 library(readr)
-library(tximportData)
 library(tidyverse)
 library(readxl)
 library(here)
 library(tictoc)
 library(knitr)
+library(glue)
+library(gridExtra)
+
+library(DarkKinaseTools)
+library(BerginskiRMisc)
 
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The goal of this document is to use DESeq2 to analyze the results of CRISPRi perturbations to see what we can say about the transcriptome changes. 
+```{r}
+if (! file.exists(here('gene_to_hgnc.csv'))) {
+  ensembl = biomaRt::useMart("ensembl",dataset="hsapiens_gene_ensembl")
+  gene_to_hgnc = biomaRt::getBM(attributes = c('ensembl_gene_id','hgnc_symbol'), mart = ensembl)
+  write_csv(gene_to_hgnc, here('gene_to_hgnc.csv'))
+} else {
+  gene_to_hgnc = readr::read_csv(here('gene_to_hgnc.csv'))
+}
+
+# source(here('shared_functions.R'))
+```
 
 # Gather Well to Treatment Table
 
 ```{r well_to_treatment_map, echo=T, results = 'hide',warning = F, message=F}
 well_to_treatment = read_excel(here('Sequencing_results/MB_Array1_Layout.xlsx')) %>%
-  dplyr::select(Dest384Well,Target) %>%
+  dplyr::select(Dest384Well,Target,Vector) %>%
   mutate('well_letter' = str_extract(Dest384Well,'[[:alpha:]]'),
          'well_digit' = str_extract(Dest384Well,'[[:digit:]]{2}$')) %>%
   mutate('well_id' = paste0(well_letter,well_digit)) %>%
-  dplyr::select(-Dest384Well,-well_letter,-well_digit)
+  dplyr::select(-Dest384Well,-well_letter,-well_digit) %>% 
+  
+  #Adding a column that indicates the repeat number
+  group_by(Target, Vector) %>% 
+  mutate(rep = 1:n()) %>% 
+  ungroup()
+
+exp_info = data.frame(files = Sys.glob(here('Sequencing_results/combined_sequencing/salmon_alignment/*/quant.sf'))) %>%
+  mutate(salmon_folder = basename(dirname(as.character(files)))) %>%
+  mutate(well_id = str_extract(salmon_folder,"[^\\.]*")) %>%
+  left_join(well_to_treatment) %>%
+  mutate(names = paste0(Target,"_",Vector,"_",rep)) %>%
+  #ensure that DMSO is the first level, forcing the fold change values to be
+  #calculated as compound_treatment/DMSO
+  mutate(Target = relevel(as.factor(Target), "DMSO","NonTarget"),
+         rep = as.factor(rep)) %>%
+  #Remove wells not mapped to a target
+  filter(!is.na(Target)) %>% 
+  mutate(group = paste0(Target,"_", Vector))
+
+exp_info_CRISPRi = exp_info %>%
+  #Remove the drug treatments
+  filter(! Target %in% c("DMSO","Trametinib","JQ1", "Tram + JQ1")) %>%
+  # filter(Target %in% c("NonTarget", "DYRK3", "MAST2")) %>%
+  
+  #Ensure that all the NonTarget runs get grouped for comparison to the CRISPRi
+  #treatments
+  mutate(group = ifelse(Target == "NonTarget", "NonTarget", group)) %>%
+  mutate(group = relevel(as.factor(group), "NonTarget")) %>%
+  identity()
+
+exp_info_compound = exp_info %>%
+  filter(Target %in% c("DMSO","Trametinib","JQ1", "Tram + JQ1")) %>%
+  mutate(Target = ifelse(Target == "Tram + JQ1","Tram_JQ1",as.character(Target))) %>%
+  mutate(Target = relevel(as.factor(Target), "DMSO")) %>%
+  identity()
 ```
 
-# Run DESeq2 on Gene Perturbations
+# Run DESeq2 on Gene Perturbations - Single DESEq
 
-```{r DESeq2_per_gene, echo=T, results='hide', warning = F, warning=F, message=F}
+```{r DESeq over gene Perturbations}
 tic();
-gene_list = unique(well_to_treatment$Target)
-gene_list = gene_list[! gene_list %in% c("NonTarget","DMSO","Trametinib","JQ1", "Tram + JQ1")]
 
-CRISPR_seq_hits = c();
-for (this_gene in gene_list) {
-  
-  samples = well_to_treatment %>% filter(Target == "NonTarget"|Target==this_gene)
-  rownames(samples) = samples$well_id
-  
-  salmon_files = here(sprintf("Sequencing_results/combined_sequencing/salmon_alignment/%s.fastq.gz/quant.sf",samples$well_id))
-  names(salmon_files) = samples$well_id
-  
-  ENST_to_HGNC = read_csv(here('ENST_to_HGNC.csv'))
-  ENST_to_ENST = ENST_to_HGNC
-  ENST_to_ENST$hgnc_symbol = ENST_to_ENST$ensembl_transcript_id_version
-  
-  salmon_import = tximport(salmon_files,type="salmon",tx2gene=ENST_to_ENST)
-  
-  ddsTxi <- DESeqDataSetFromTximport(salmon_import,
-                                     colData = samples,
-                                     design = ~ Target)
-  
-  dds <- DESeq(ddsTxi)
-  non_target_vs_results <- results(dds)
-  
-  hits <- as.data.frame(non_target_vs_results[which(non_target_vs_results$padj < 0.05),]) %>%
-    rownames_to_column(var = 'ensembl_transcript_id_version') %>%
-    left_join(ENST_to_HGNC) %>%
-    mutate(CRISPRi_target = this_gene) %>%
-    select(hgnc_symbol,CRISPRi_target,log2FoldChange,ensembl_transcript_id_version,everything())
-  
-  CRISPR_seq_hits = rbind(CRISPR_seq_hits,hits)
-}
-write_csv(CRISPR_seq_hits,here('DESeq2_CRISPR_hits_combined.csv'))
+drug_perturb_exp = summarizeToGene(tximeta(exp_info_CRISPRi))
+
+dds <- DESeqDataSet(drug_perturb_exp, design = ~group)
+keep <- rowSums(counts(dds)) > 1
+dds <- dds[keep,]
+
+dds_analysis <- DESeq(dds)
+write_rds(dds_analysis, here('DESeq_results/DEseq_analysis.rds'))
 toc();
 ```
 
-# Hits from the Gene Perturbations
+```{r}
+tic();
+dds_analysis = read_rds(here('DESeq_results/DEseq_analysis.rds'))
+full_DESeq = tribble(~hgnc_symbol,~ensembl_gene_id, ~baseMean, ~log2FoldChange, ~lfcSE, ~stat, ~pvalue, ~padj, ~treatment)
+summary_stats = tribble(~treatment,~number_2fold,~num_kinases,~num_dark_kinases,~dk_diff_str)
 
-These all the differentially regulated genes as filtered at the 0.05 level.
-
-```{r gene_hits_display}
-CRISPR_seq_hits = CRISPR_seq_hits %>% 
-  arrange(desc(CRISPRi_target), desc(log2FoldChange))
-
-kable(CRISPR_seq_hits)
-```
-
-Let's also look at the number of genes hit by each perturbation.
-
-```{r number_per_gene}
-hit_count_table = CRISPR_seq_hits %>% 
-  group_by(CRISPRi_target) %>% 
-  summarise(hit_count = n()) %>%
-  arrange(desc(hit_count))
-
-kable(hit_count_table)
-```
-
-# Run DESeq2 on Drug Perturbations
-
-```{r DESeq2_compound, echo=T, results='hide', warning = F, warning=F, message=F}
-compound_list = unique(well_to_treatment$Target)
-compound_list = compound_list[compound_list %in% c("Trametinib","JQ1", "Tram + JQ1")]
-
-compound_seq_hits = c();
-for (compound in compound_list) {
+for (this_comparison in resultsNames(dds_analysis)[-1]) {
+  # dds_results = lfcShrink(dds_analysis, coef=this_comparison, type="apeglm")
+  dds_results = results(dds_analysis, name=this_comparison)
   
-  samples = well_to_treatment %>% filter(Target == "DMSO"|Target==compound)
-  rownames(samples) = samples$well_id
+  full_DESeq = rbind(
+    full_DESeq,
+    dds_results %>%
+      as.data.frame() %>%
+      rownames_to_column(var = "ensembl_gene_id") %>%
+      mutate(treatment = this_comparison) %>%
+      left_join(gene_to_hgnc) %>%
+      dplyr::select("hgnc_symbol","treatment",everything())
+  )
   
-  salmon_files = here(sprintf("Sequencing_results/combined_sequencing/salmon_alignment/%s.fastq.gz/quant.sf",samples$well_id))
-  names(salmon_files) = samples$well_id
+  dds_results_filtered = dds_results %>%
+    as.data.frame() %>%
+    rownames_to_column(var = "ensembl_gene_id") %>%
+    filter(padj <= 0.05) %>%
+    left_join(gene_to_hgnc) %>%
+    filter(!is.na(hgnc_symbol)) %>%
+    mutate("treatment" = this_comparison)
   
-  ENST_to_HGNC = read_csv(here('ENST_to_HGNC.csv'))
-  ENST_to_ENST = ENST_to_HGNC
-  ENST_to_ENST$hgnc_symbol = ENST_to_ENST$ensembl_transcript_id_version
+  dds_results_filtered_kinase = dds_results_filtered %>%
+    filter(hgnc_symbol %in% all_kinases$symbol)
   
-  salmon_import = tximport(salmon_files,type="salmon",tx2gene=ENST_to_ENST)
+  dds_results_filtered_dark_kinase = dds_results_filtered %>%
+    filter(hgnc_symbol %in% dark_kinases$symbol)
   
-  ddsTxi <- DESeqDataSetFromTximport(salmon_import,
-                                     colData = samples,
-                                     design = ~ Target)
-  
-  dds <- DESeq(ddsTxi)
-  non_target_vs_results <- results(dds)
-  
-  hits <- as.data.frame(non_target_vs_results[which(non_target_vs_results$padj < 0.05),]) %>%
-    rownames_to_column(var = 'ensembl_transcript_id_version') %>%
-    left_join(ENST_to_HGNC) %>%
-    mutate(compound = compound) %>%
-    select(hgnc_symbol,compound,log2FoldChange,ensembl_transcript_id_version,everything())
-  
-  compound_seq_hits = rbind(compound_seq_hits,hits)
+  summary_stats = rbind(
+    summary_stats,
+    data.frame(
+      treatment = this_comparison,
+      number_2fold = dim(dds_results_filtered)[1],
+      num_kinases = dim(dds_results_filtered_kinase)[1],
+      num_dark_kinases = dim(dds_results_filtered_dark_kinase)[1],
+      dk_diff_str = ifelse(dim(dds_results_filtered_dark_kinase)[1] == 0,
+                           "",
+                           glue_collapse(sort(dds_results_filtered_dark_kinase$hgnc_symbol), sep=" | "))
+    )
+  )
 }
-write_csv(compound_seq_hits,here('DESeq2_CRISPR_drug_hits_combined.csv'))
+
+write_csv(full_DESeq,here('DESeq_results/CRISPRi_full_DESeq.csv.gz'))
+write_csv(summary_stats,here('DESeq_results/CRISPRi_summary.csv'))
+toc();
 ```
 
-These all the differentially regulated genes as filtered at the 0.05 level.
+```{r}
+full_DESeq = read_csv(here('DESeq_results/CRISPRi_full_DESeq.csv.gz')) %>%
+  mutate(log2_ptile = percent_rank(log2FoldChange))
 
-```{r compound_hits_display}
-compound_seq_hits = compound_seq_hits %>%
-  arrange(desc(compound),desc(log2FoldChange))
+matched_results_CRISPRi = full_DESeq %>% 
+  filter(str_detect(treatment,paste0("group_",hgnc_symbol,"_")))
 
-kable(compound_seq_hits)
+log2_plot = ggplot(matched_results_CRISPRi, aes(x=log2FoldChange)) + 
+  geom_histogram() +
+  labs(x="Log 2 Fold Change in Targeted Genes", y="") +
+  theme_berginski()
+
+log2_ptile_plot = ggplot(matched_results_CRISPRi, aes(x=log2_ptile)) + 
+  geom_histogram() +
+  labs(x="Percentile Log 2 Fold Change in Targeted Genes", y="") +
+  theme_berginski()
+ggsave(here('figures/targeted_genes_changes.png'),grid.arrange(log2_plot, log2_ptile_plot))
+
+# ggplot(matched_results_CRISPRi, aes(x=log2FoldChange,y=log2_ptile)) + geom_point()
 ```
 
-Let's also look at the number of genes hit by each perturbation.
+# Run DESeq on Gene Perturbations - Multiple DEseq
 
-```{r compound_number_per_gene}
-hit_count_table = compound_seq_hits %>% 
-  group_by(compound) %>% 
-  summarise(hit_count = n()) %>%
-  arrange(desc(hit_count))
+```{r}
+tic()
+exp_info_CRISPRi_no_nontarget = exp_info_CRISPRi %>%
+  filter(group != "NonTarget")
 
-kable(hit_count_table)
+full_DESeq = tribble(~hgnc_symbol,~ensembl_gene_id, ~baseMean, ~log2FoldChange, ~lfcSE, ~stat, ~pvalue, ~padj, ~treatment)
+summary_stats = tribble(~treatment,~number_2fold,~num_kinases,~num_dark_kinases,~dk_diff_str)
+
+for (this_perturbation in sort(unique(exp_info_CRISPRi_no_nontarget$group))) {
+  this_exp_set = exp_info_CRISPRi %>%
+    filter(group == this_perturbation | group == "NonTarget")
+  
+  drug_perturb_exp = summarizeToGene(tximeta(this_exp_set))
+  
+  dds <- DESeqDataSet(drug_perturb_exp, design = ~group)
+  keep <- rowSums(counts(dds)) > 1
+  dds <- dds[keep,]
+  
+  dds_analysis <- DESeq(dds)
+  
+  this_comparison = resultsNames(dds_analysis)[2]
+  
+  dds_results = results(dds_analysis, name=this_comparison)
+  
+  full_DESeq = rbind(
+    full_DESeq,
+    dds_results %>%
+      as.data.frame() %>%
+      rownames_to_column(var = "ensembl_gene_id") %>%
+      mutate(treatment = this_comparison) %>%
+      left_join(gene_to_hgnc) %>%
+      dplyr::select("hgnc_symbol","treatment",everything())
+  )
+
+
+  dds_results_filtered = dds_results %>%
+    as.data.frame() %>%
+    rownames_to_column(var = "ensembl_gene_id") %>%
+    filter(padj <= 0.05) %>%
+    left_join(gene_to_hgnc) %>%
+    filter(!is.na(hgnc_symbol)) %>%
+    mutate("treatment" = this_comparison)
+
+  dds_results_filtered_kinase = dds_results_filtered %>%
+    filter(hgnc_symbol %in% all_kinases$symbol)
+
+  dds_results_filtered_dark_kinase = dds_results_filtered %>%
+    filter(hgnc_symbol %in% dark_kinases$symbol)
+
+  summary_stats = rbind(
+    summary_stats,
+    data.frame(
+      treatment = this_comparison,
+      number_signif = dim(dds_results_filtered)[1],
+      num_kinases = dim(dds_results_filtered_kinase)[1],
+      num_dark_kinases = dim(dds_results_filtered_dark_kinase)[1],
+      dk_diff_str = ifelse(dim(dds_results_filtered_dark_kinase)[1] == 0,
+                           "",
+                           glue_collapse(sort(dds_results_filtered_dark_kinase$hgnc_symbol), sep=" | "))
+    )
+  )
+}
+
+write_csv(full_DESeq,here('DESeq_results/CRISPRi_multi_DESeq.csv.gz'))
+write_csv(summary_stats,here('DESeq_results/CRISPRi_single_summary.csv'))
+toc()
+```
+
+```{r combine single and multi DESeq}
+single_DESeq = read_csv(here('DESeq_results/CRISPRi_single_summary.csv'))
+multi_DESeq = read_csv(here('DESeq_results/CRISPRi_multi_summary.csv'))
+```
+
+# Run DESeq2 on Compound Perturbations
+
+```{r DESeq over gene Perturbations}
+tic();
+
+compound_perturb_exp = summarizeToGene(tximeta(exp_info_compound))
+
+dds <- DESeqDataSet(compound_perturb_exp, design = ~Target)
+keep <- rowSums(counts(dds)) > 1
+dds <- dds[keep,]
+
+dds_analysis <- DESeq(dds)
+
+full_DESeq = tribble(~hgnc_symbol,~ensembl_gene_id, ~baseMean, ~log2FoldChange, ~lfcSE, ~stat, ~pvalue, ~padj, ~treatment)
+summary_stats = tribble(~treatment,~number_2fold,~num_kinases,~num_dark_kinases,~dk_diff_str)
+
+for (this_comparison in resultsNames(dds_analysis)[-1]) {
+  dds_results = lfcShrink(dds_analysis, coef=this_comparison, type="apeglm")
+  
+  full_DESeq = rbind(
+    full_DESeq,
+    dds_results %>%
+      as.data.frame() %>%
+      rownames_to_column(var = "ensembl_gene_id") %>%
+      mutate(treatment = this_comparison) %>%
+      left_join(gene_to_hgnc) %>%
+      dplyr::select("hgnc_symbol","treatment",everything())
+  )
+  
+  dds_results_filtered = dds_results %>%
+    as.data.frame() %>%
+    rownames_to_column(var = "ensembl_gene_id") %>%
+    filter(abs(log2FoldChange) >= 1, padj <= 0.05) %>%
+    left_join(gene_to_hgnc) %>%
+    filter(!is.na(hgnc_symbol)) %>%
+    mutate("treatment" = this_comparison)
+  
+  dds_results_filtered_kinase = dds_results_filtered %>%
+    filter(hgnc_symbol %in% all_kinases$symbol)
+  
+  dds_results_filtered_dark_kinase = dds_results_filtered %>%
+    filter(hgnc_symbol %in% dark_kinases$symbol)
+  
+  summary_stats = rbind(
+    summary_stats,
+    data.frame(
+      treatment = this_comparison,
+      number_2fold = dim(dds_results_filtered)[1],
+      num_kinases = dim(dds_results_filtered_kinase)[1],
+      num_dark_kinases = dim(dds_results_filtered_dark_kinase)[1],
+      dk_diff_str = ifelse(dim(dds_results_filtered_dark_kinase)[1] == 0,
+                           "",
+                           glue_collapse(sort(dds_results_filtered_dark_kinase$hgnc_symbol), sep=" | "))
+    )
+  )
+}
+
+write_csv(full_DESeq,here('DESeq_results/compound_full_DESeq.csv.gz'))
+write_csv(summary_stats,here('DESeq_results/compound_summary.csv'))
+
+toc();
 ```
