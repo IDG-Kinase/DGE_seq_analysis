@@ -54,6 +54,17 @@ well_to_treatment = read_excel(here('Sequencing_results/MB_Array1_Layout.xlsx'))
   mutate(rep = 1:n()) %>% 
   ungroup()
 
+#There was a problem with the barcode on well P11, so the reads from P11 are
+#actually assigned to a well named p11_new1 in the naming scheme I used to save
+#out the salmon results. Replacing that entry here:
+P11_row = well_to_treatment %>% 
+  filter(well_id == "P11")
+stopifnot(dim(P11_row)[1] == 1)
+P11_row$well_id = "p11_new1"
+well_to_treatment = well_to_treatment %>%
+  filter(well_id != "P11") %>%
+  add_row(P11_row)
+
 exp_info = data.frame(files = Sys.glob(here('Sequencing_results/combined_sequencing/salmon_alignment/*/quant.sf'))) %>%
   mutate(salmon_folder = basename(dirname(as.character(files)))) %>%
   mutate(well_id = str_extract(salmon_folder,"[^\\.]*")) %>%
@@ -70,7 +81,6 @@ exp_info = data.frame(files = Sys.glob(here('Sequencing_results/combined_sequenc
 exp_info_CRISPRi = exp_info %>%
   #Remove the drug treatments
   filter(! Target %in% c("DMSO","Trametinib","JQ1", "Tram + JQ1")) %>%
-  # filter(Target %in% c("NonTarget", "DYRK3", "MAST2")) %>%
   
   #Ensure that all the NonTarget runs get grouped for comparison to the CRISPRi
   #treatments
