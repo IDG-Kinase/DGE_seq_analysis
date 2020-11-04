@@ -11,10 +11,9 @@ library(here)
 library(tidyverse)
 library(readxl)
 
-register(MulticoreParam(64))
+register(MulticoreParam(128))
 
 tic();
-
 
 well_to_treatment = read_excel(here('Sequencing_results/MB_Array1_Layout.xlsx')) %>%
   dplyr::select(Dest384Well,Target,Vector) %>%
@@ -59,7 +58,8 @@ exp_info_CRISPRi = exp_info %>%
   #Ensure that all the NonTarget runs get grouped for comparison to the CRISPRi
   #treatments
   mutate(group = ifelse(Target == "NonTarget", "NonTarget", group)) %>%
-  mutate(group = relevel(as.factor(group), "NonTarget")) %>%
+  mutate(group = relevel(as.factor(group), "NonTarget"),
+         Target = relevel(as.factor(Target), "NonTarget")) %>%
   identity()
 
 exp_info_compound = exp_info %>%
@@ -71,10 +71,18 @@ exp_info_compound = exp_info %>%
 
 drug_perturb_exp = summarizeToGene(tximeta(exp_info_CRISPRi))
 
-dds <- DESeqDataSet(drug_perturb_exp, design = ~group)
+# dds <- DESeqDataSet(drug_perturb_exp, design = ~group)
+# keep <- rowSums(counts(dds)) > 1
+# dds <- dds[keep,]
+# 
+# dds_analysis <- DESeq(dds)
+# write_rds(dds_analysis, here('DESeq_results/DEseq_analysis.rds'))
+
+dds <- DESeqDataSet(drug_perturb_exp, design = ~Target)
 keep <- rowSums(counts(dds)) > 1
 dds <- dds[keep,]
 
 dds_analysis <- DESeq(dds)
-write_rds(dds_analysis, here('DESeq_results/DEseq_analysis.rds'))
+write_rds(dds_analysis, here('DESeq_results/DEseq_analysis_per_gene.rds'))
+
 toc();
